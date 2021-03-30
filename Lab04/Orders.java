@@ -7,7 +7,7 @@ public class Orders {
     private static int nbOrders = 0; 
     public void addDigitalVideoDisc(DigitalVideoDisc dics){
         //checkNbOrders();
-        if(qtyOrdered < MAX_NUMBER_ORDERED && checkNbOrders() != null){
+        if(qtyOrdered < MAX_NUMBER_ORDERED){
             itemsOrdered[qtyOrdered] = dics;
             System.out.println("Dics has been added");
             qtyOrdered += 1;
