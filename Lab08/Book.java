@@ -5,7 +5,7 @@ public class Book extends Media implements Comparable{
     private ArrayList<String> authors = new ArrayList<String>();
     String content;
     List<String> contentTokens = new ArrayList<String>();
-    Map<String,Integer> wordFrequency;
+    Map<String,Integer> wordFrequency = new HashMap<String,Integer>();
     public void processContent(){
         String []s = content.split(" ");
         for(int i = 0;i < s.length ; i++){
@@ -14,7 +14,7 @@ public class Book extends Media implements Comparable{
         java.util.Collections.sort(contentTokens);
         // Collections.frequency(c, o)
         for(int i = 0;i < contentTokens.size();i++){
-            wordFrequency.put(contentTokens.get(i),Collections.frequency(contentTokens, contentTokens.get(i)));
+            wordFrequency.put(contentTokens.get(i),Collections.frequency(contentTokens, contentTokens.get(i))/2);
         }
     }
     public void setAuthors(ArrayList<String> authors) {
@@ -78,13 +78,14 @@ public class Book extends Media implements Comparable{
     }
     @Override
     public String toString(){
+        processContent();
         String s = "";
-        s = s + this.getId() + this.getTitle() + this.getCategory() + this.getCost() + this.content;
+        s = s + this.getId() + " " + this.getTitle() + " " + this.getCategory() + " " + this.getCost() + " "+ this.content;
         Set set = wordFrequency.keySet();
         for (Object key : set) {
             s = s + "\n" + key + " " + wordFrequency.get(key);
         }
-        s = s + "\n" + contentTokens.size();
+        s = s + "\n" + contentTokens.size()/2;
         return s;
     }
 }
