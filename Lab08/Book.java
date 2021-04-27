@@ -4,7 +4,7 @@ import java.util.*;
 public class Book extends Media implements Comparable{
     private ArrayList<String> authors = new ArrayList<String>();
     String content;
-    List<String> contentTokens;
+    List<String> contentTokens = new ArrayList<String>();
     Map<String,Integer> wordFrequency;
     public void processContent(){
         String []s = content.split(" ");
